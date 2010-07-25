@@ -91,17 +91,23 @@
 }
 
 .jcarousel-prev.jcarousel-prev-horizontal {
-    height: 50px;
 	width: 50px;
-	background-color: black;
 		display:block;
+		color: blue;
+		float:left;
+		font-weight:bold;
 }
 
 .jcarousel-next.jcarousel-next-horizontal {
-    height: 50px;
-	width: 50px;
-	background-color: blue;
+	width: 50px;	
 	display:block;
+	color: blue;
+	float:right;
+	font-weight:bold;
+}
+
+#close-light-box{
+	float:right; font-weight:bold;
 }
 
 

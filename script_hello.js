@@ -168,7 +168,7 @@ this.scroll(((this.options.wrap=='both'||this.options.wrap=='first')&&this.optio
 
 jQuery('#doc3').append('<div id="lightbox-panel"></div>');
 
-jQuery('#lightbox-panel').append('<h2>Lightbox Panel<span id="close-light-box">Close</span></h2>');
+jQuery('#lightbox-panel').append('<h2>||<span id="close-light-box">Close</span></h2>');
 
 jQuery('#lightbox-panel').append('<div id="lightbox">');
 
@@ -176,7 +176,10 @@ jQuery("#lightbox").append('<ul id="yqlResponse"></ul>');
 
 jQuery('#interest-field dl.prfFavMusic').click(function(){
 		jQuery("#lightbox, #lightbox-panel").fadeIn(300);  
+		
 		  jQuery('#yqlResponse').jcarousel({});
+		  jQuery('.jcarousel-next.jcarousel-next-horizontal').text("Next");
+		  jQuery('.jcarousel-prev.jcarousel-prev-horizontal').text("Previous");
 
 		
 });
@@ -205,4 +208,39 @@ function(results) {
 	jQuery(artist_array).each(function(index, value){
 		video_search_for(value);
 	});
+
+
+	
+		
+function hobbies_search_for(hobby){
+
+var hobbies_output="";
+jQuery.getJSON("http://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20json%20where%20url%3D%22http%3A%2F%2Fsearch.twitter.com%2Fsearch.json%3Fq%3Dcricket%22&format=json&diagnostics=true&callback=?", 
+function(results) {    
+		
+            jQuery.each(results.query.results.json.results, function(index, data){
+               if(data.text != undefined)              
+				hobbies_output = hobbies_output + '<li style="font-weight:bold; padding:5px 0px;">'+data.text+'</li>';
+            });
+		 
+		 jQuery('#yqlResponse').replaceWith(hobbies_output);
+          });
+		  
+		  jQuery("#lightbox, #lightbox-panel").fadeIn(300);  
+}	
+	
+	
+jQuery('#interest-field dl.prfFavHobbies').click(function(){
+
+	jQuery("#lightbox").replaceWith('<ul id="yqlResponse"></ul>');
+	var hobbies =  jQuery('.prfFavHobbies dd:first').text().replace('Visible to everyone', '');
+	var hobbies_array = hobbies.split(',');
+
+	jQuery(hobbies_array).each(function(index, value){
+		hobbies_search_for(value);
+	});
+		  
+		  ////select * from json where url="http://search.twitter.com/search.json?q=cricket"
+		
+});
 
