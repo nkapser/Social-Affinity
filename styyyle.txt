@@ -90,19 +90,21 @@
     background-position: -32px 0;
 }
 
-.jcarousel-skin-tango .jcarousel-next {
+.jcarousel-prev.jcarousel-prev-horizontal {
     height: 50px;
 	width: 50px;
 	background-color: black;
 		display:block;
 }
 
-.jcarousel-skin-tango .jcarousel-prev {
+.jcarousel-next.jcarousel-next-horizontal {
     height: 50px;
 	width: 50px;
 	background-color: blue;
 	display:block;
 }
+
+
 
 
 .jcarousel-skin-tango .jcarousel-next-horizontal:active {
