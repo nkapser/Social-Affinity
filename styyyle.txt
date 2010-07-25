@@ -1,3 +1,10 @@
+.tweet_stuff{
+font-weight:bold; 
+padding:5px 0px; 
+list-style-image:url('http://i.ahaimg.com/is/images/twitter.jpg');
+}
+
+
 * /Lightbox background */
 #lightbox {
  display:none;

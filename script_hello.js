@@ -210,7 +210,13 @@ function(results) {
 	});
 
 
-	
+function replaceWithUrl(data){
+	var links = data.match(/@[0-9a-zA-Z]+/);
+	jQuery(links).each(function(text){
+		data = data.replace(text, "<a href='http://www.twitter.com/"+data.replace("@","")+"'/>"+data+"</a>");
+	});
+	return data;
+}	
 		
 function hobbies_search_for(hobby){
 
@@ -220,7 +226,7 @@ function(results) {
 		
             jQuery.each(results.query.results.json.results, function(index, data){
                if(data.text != undefined)              
-				hobbies_output = hobbies_output + '<li style="font-weight:bold; padding:5px 0px;">'+data.text+'</li>';
+				hobbies_output = hobbies_output + "<li class='tweet_stuff'>"+replaceWithUrl(data.text)+"</li>";
             });
 		 
 		 jQuery('#yqlResponse').replaceWith(hobbies_output);
